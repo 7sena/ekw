@@ -10,4 +10,20 @@ client.on('ready', async() => {
     },205);
 });
 
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+  if (command == "2say") {
+if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('?|**\`ADMINISTRATOR\`ليس لديك صلاحيات`**');
+   message.channel.sendMessage(args.join("  "))
+   message.delete()
+  }
+ });
+
 client.login("NDczMTAzMTU1MzUwMDc3NDUx.DrebFA.64rY18JFcZJ9FjFUoEi_5qBZHaU");
